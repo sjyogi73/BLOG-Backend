@@ -13,7 +13,6 @@ def delete_data(username):
             cursor = conn.cursor()
             sql = "DELETE FROM USER WHERE username = %s"
             cursor.execute(sql, (username,))
-           
             conn.commit()
             return jsonify({'message': 'User deleted successfully'}), 200
         except mysql.connector.Error as err:

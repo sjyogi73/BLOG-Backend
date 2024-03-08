@@ -20,7 +20,6 @@ def put_data(data):
             username = data.get('username')
             password =data.get('password')
             age = data.get('age')
-            active = data.get('active')
             gender = data.get('gender')
             status = data.get('status')
             sql = "UPDATE USER SET"
@@ -30,9 +29,6 @@ def put_data(data):
             if age !=0:
                 sql += " age = {},".format(age)
             
-            if active == 0 or active == 1 :
-                sql += " active = {},".format(active)
-
             if gender !="":
                 sql += " gender = '{}',".format(gender)
 
@@ -51,7 +47,7 @@ def put_data(data):
       
         except mysql.connector.Error as err:
             print("Error:", err)
-            return jsonify({'error': 'Database error'}), 500
+            return jsonify({'error': err}), 500
     else:
         return jsonify({'error': 'Connection to database failed'}), 500
 
